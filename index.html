@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Frame Studio</title>
+<link rel="icon" type="image/png" href="logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Prompt:wght@300;400;500;600&amp;family=IBM+Plex+Sans+Thai:wght@300;400;500&amp;display=swap">
+<style>
+/* Layout idea: a cocoa studio wall swept by rose-gold light; serif English over Thai headings, warm glass cards with photos. */
+:root{
+  --bg:#231411;
+  --card:rgba(92,52,42,.40);
+  --line:rgba(232,170,140,.34);
+  --hair:rgba(232,170,140,.45);
+  --ink:#F8EBE3;
+  --muted:#D9BFB2;
+  --cream:#F8E6D8;
+  --rose:#E7A486;
+  --serif:'Cormorant Garamond','Times New Roman',serif;
+  --display:'Prompt','IBM Plex Sans Thai',system-ui,sans-serif;
+  --body:'IBM Plex Sans Thai','Prompt',system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;text-wrap:balance}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--cream);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+.sweeps{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(900px 600px at 10% 25%,rgba(110,58,45,.5),transparent 65%),radial-gradient(900px 700px at 95% 75%,rgba(100,52,40,.55),transparent 65%),var(--bg)}
+.sweeps svg{position:absolute;inset:0;width:100%;height:100%}
+header,main,footer{position:relative;z-index:1}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(30,17,14,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,170,140,.12)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+.logo-txt{font-family:var(--serif);font-style:italic;font-weight:600;font-size:30px;text-decoration:none;color:var(--cream);white-space:nowrap;line-height:1}
+.links{display:flex;gap:34px}
+.links a{text-decoration:none;font-family:var(--display);font-size:14px;letter-spacing:.4px;color:#EED8CB}
+.links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;padding:12px 30px;transition:transform .2s,background .2s,box-shadow .2s;cursor:pointer;border:0}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{flex:none}
+.btn-cream{background:linear-gradient(90deg,#FFF3EA,#F3D6C3);color:#2E1812;box-shadow:0 6px 24px rgba(231,164,134,.25)}
+.btn-cream:hover{box-shadow:0 8px 30px rgba(231,164,134,.4)}
+.btn-line{border:1.5px solid rgba(248,230,216,.85);color:var(--cream);background:transparent;font-weight:500}
+.btn-line:hover{background:rgba(248,230,216,.08)}
+.btn-sm{padding:8px 22px;font-size:15px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;min-height:620px;display:flex;align-items:center}
+.hero-photo{position:absolute;right:0;top:0;bottom:0;width:62%;background:url(img/hero-photo.jpg) center/cover no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%)}
+.hero .wrap{position:relative;padding:70px 0 120px}
+.hero-copy{max-width:560px}
+.hero h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(56px,7.4vw,98px);line-height:.92;color:var(--cream);letter-spacing:-.5px}
+.hero .en{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.4vw,44px);color:#F0C2A8;margin-top:22px}
+.hero .rule{width:290px;max-width:60%;height:1.5px;background:linear-gradient(90deg,var(--rose),transparent);margin:22px 0 26px}
+.hero .th{font-family:var(--display);font-size:clamp(20px,2.3vw,28px);color:var(--cream)}
+.hero .ctas{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px}
+.hero .ctas .btn{min-width:240px}
+
+.plat{position:relative;z-index:2;margin-top:-76px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:20px 34px;border-radius:20px;background:rgba(56,32,26,.72);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.plat span{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:17px;color:#F4E2D7;padding:0 6px}
+.plat i{width:1px;height:30px;background:var(--line)}
+.lemon{font-family:var(--serif);font-style:italic;font-weight:700;font-size:22px!important;letter-spacing:-.3px}
+
+/* section headings */
+section{padding:96px 0 0}
+.sh{text-align:center;margin-bottom:42px}
+.sh .en{display:flex;align-items:center;justify-content:center;gap:28px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.4vw,42px);color:#F0C2A8}
+.sh .en::before,.sh .en::after,.sh h2.lined::before,.sh h2.lined::after{content:"";width:150px;max-width:18vw;height:1px;background:linear-gradient(90deg,transparent,var(--hair))}
+.sh .en::after,.sh h2.lined::after{background:linear-gradient(270deg,transparent,var(--hair))}
+.sh .en.caps{font-style:normal;text-transform:uppercase;letter-spacing:5px;font-size:clamp(20px,2.2vw,28px);color:var(--cream)}
+.sh .small{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(22px,2.4vw,30px);color:var(--cream)}
+.sh .big{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(54px,7.4vw,96px);line-height:1;color:var(--cream)}
+.sh h2{font-size:clamp(34px,4.6vw,58px);font-weight:400;color:var(--cream);line-height:1.25;margin-top:4px}
+.sh h2.lined{display:flex;align-items:center;justify-content:center;gap:28px}
+.sh h2 em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.12em}
+
+.card{background:linear-gradient(160deg,rgba(110,62,50,.45),rgba(60,34,28,.45));border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+
+/* about */
+.about{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.about .card{overflow:hidden}
+.about img{width:100%;aspect-ratio:492/326;object-fit:cover;border-bottom:1px solid var(--line)}
+.about .bd{padding:24px 26px 28px}
+.ttl{display:flex;align-items:center;gap:20px}
+.ttl .ic{flex:none;color:var(--rose);padding-right:20px;border-right:1px solid var(--line);display:flex}
+.ttl h3{font-size:22px;font-weight:500;line-height:1.3}
+.about p{margin-top:14px;color:#EBD6CB;font-size:15.5px;line-height:1.75}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.svc details{overflow:hidden}
+.svc summary{list-style:none;cursor:pointer;display:block}
+.svc summary::-webkit-details-marker{display:none}
+.svc img{width:100%;aspect-ratio:504/400;object-fit:cover;border-bottom:1px solid var(--line)}
+.svc .bar{display:flex;align-items:center;gap:18px;padding:22px 22px 24px}
+.svc .bar .ic{flex:none;color:var(--cream);padding-right:18px;border-right:1px solid var(--line);display:flex}
+.svc .bar h3{font-size:21px;font-weight:500;line-height:1.3}
+.svc .bar p{font-size:14px;color:#EBD6CB;margin-top:4px}
+.svc .bar .txt{flex:1;min-width:0}
+.arrow{flex:none;width:36px;height:36px;border-radius:50%;background:var(--cream);color:#2E1812;display:grid;place-items:center;transition:transform .25s}
+.svc details[open] .arrow{transform:rotate(90deg)}
+.svc ul{margin:0;padding:16px 24px 22px 44px;border-top:1px solid var(--line);color:#EBD6CB;font-size:15px;display:grid;gap:4px}
+
+/* system */
+.sys{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
+.sys .en{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,3vw,36px);color:#F0C2A8;display:flex;align-items:center;gap:24px}
+.sys .en::after{content:"";width:200px;max-width:25vw;height:1px;background:linear-gradient(90deg,var(--hair),transparent)}
+.sys h2{font-size:clamp(34px,4.4vw,56px);font-weight:500;color:var(--cream);line-height:1.2;margin-top:10px}
+.sys .lead{font-size:clamp(17px,1.8vw,21px);color:#F1DED3;margin-top:22px;line-height:1.7}
+.monitor{max-width:520px;margin-inline:auto;width:100%}
+.mscreen{aspect-ratio:16/9.2;border:10px solid #1A100E;outline:2px solid #B9A59B;border-radius:12px;background:#3A2621;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#F1DED3;text-align:center;padding:20px;font-size:17px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.mscreen svg{color:var(--rose)}
+.mneck{width:20%;height:44px;margin:0 auto;background:linear-gradient(90deg,#8E7E76,#D4C5BC,#8E7E76);clip-path:polygon(18% 0,82% 0,92% 100%,8% 100%)}
+.mfoot{width:34%;height:10px;margin:0 auto;border-radius:6px;background:linear-gradient(90deg,#8E7E76,#E2D5CC,#8E7E76);box-shadow:0 14px 30px rgba(231,164,134,.25)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;margin-top:56px}
+.opt{display:flex;align-items:center;gap:30px;padding:30px 40px}
+.tile{flex:none;width:90px;height:84px;border-radius:18px;display:grid;place-items:center;color:#FBE3D5;background:linear-gradient(145deg,#B9705A,#7A3F30);box-shadow:0 10px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.opt .txt{padding-left:30px;border-left:1px solid var(--line)}
+.opt h3{font-size:clamp(24px,2.6vw,32px);font-weight:500;color:var(--cream)}
+.opt p{font-size:16px;color:#EBD6CB;margin-top:4px}
+.sys-ctas{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:50px}
+.sys-ctas .btn{min-width:300px;font-size:19px;padding:15px 30px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;position:relative;text-align:center}
+.steps::before{content:"";position:absolute;left:14%;right:14%;top:44px;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 10%,var(--hair) 90%,transparent)}
+.step .c{position:relative;width:90px;height:90px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;color:#FBE3D5;background:radial-gradient(circle at 40% 35%,#B9705A,#6E3729);border:1.5px solid #F0B395;box-shadow:0 0 30px rgba(231,164,134,.45)}
+.step h3{font-size:clamp(20px,2vw,25px);font-weight:500;color:var(--cream)}
+.step h3 b{font-weight:500;margin-right:10px}
+.step p{font-size:15px;color:#EBD6CB;margin-top:8px;line-height:1.7}
+.step img{margin-top:28px;width:100%;aspect-ratio:375/306;object-fit:cover;border-radius:18px;border:1px solid var(--line)}
+
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pk .card{text-align:center;padding:30px 18px 28px;display:flex;flex-direction:column;align-items:center}
+.pk .ic{color:var(--cream)}
+.pk h3{font-family:var(--serif);font-weight:600;font-size:clamp(32px,3.2vw,42px);letter-spacing:1.5px;color:var(--cream);margin-top:6px;line-height:1.1}
+.pk p{font-size:16px;color:#EBD6CB;margin-top:8px}
+.pk img{width:100%;aspect-ratio:425/222;object-fit:cover;border-radius:16px;margin:24px 0 26px}
+.pk .btn{min-width:72%}
+.pk-note{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:36px;color:var(--muted);font-size:17px}
+.pk-note::before,.pk-note::after{content:"";width:220px;max-width:20vw;height:1px;background:linear-gradient(90deg,transparent,var(--hair))}
+.pk-note::after{background:linear-gradient(270deg,transparent,var(--hair))}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.work{margin:0;display:flex;flex-direction:column;gap:14px}
+.vbox{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#1A0F0D;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.vbox video{width:100%;height:100%;object-fit:cover;display:block}
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;padding-left:4px;background:linear-gradient(135deg,#FFF3EA,#F0C9B1);box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .2s}
+.vplay:hover{transform:translate(-50%,-50%) scale(1.07)}
+.vbox.playing .vplay{display:none}
+.work figcaption{font-family:var(--display);font-size:16px;color:var(--cream);display:flex;flex-direction:column;gap:6px}
+.work .cat{align-self:flex-start;font-size:12.5px;color:#2E1812;background:var(--rose);border-radius:999px;padding:2px 12px}
+
+/* reviews */
+.rv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.rv .card{text-align:center;padding:42px 30px 40px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.q{font-family:var(--serif);font-weight:700;font-size:96px;line-height:.55;height:44px;background:linear-gradient(180deg,#F5C1A4,#C9785E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv p{font-size:clamp(20px,2.2vw,26px);color:var(--cream)}
+.rv .dash{width:56px;height:2px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+.logos-h{display:flex;align-items:center;justify-content:center;gap:28px;margin:60px 0 28px;font-family:var(--display);font-size:clamp(26px,3vw,38px);color:var(--cream)}
+.logos-h::before,.logos-h::after{content:"";width:280px;max-width:22vw;height:1px;background:linear-gradient(90deg,transparent,var(--hair))}
+.logos-h::after{background:linear-gradient(270deg,transparent,var(--hair))}
+.logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.logo{height:110px;border-radius:16px;display:grid;place-items:center;padding:14px 18px}
+.logo img{max-width:100%;max-height:64px;width:auto;height:auto;object-fit:contain}
+
+/* contact */
+.final{text-align:center;padding:90px 0 80px}
+.final h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(36px,4.6vw,60px);color:var(--cream);line-height:1.1}
+.final .th{font-size:19px;color:#EBD6CB;margin-top:10px}
+.final .btn{margin-top:30px;font-size:19px;padding:15px 44px}
+.contact-line{margin-top:22px;color:var(--muted);font-size:15px}
+
+/* footer */
+footer{background:rgba(26,14,12,.92);border-top:1px solid rgba(232,170,140,.14)}
+footer .wrap{display:flex;align-items:center;gap:28px;padding:20px 0;flex-wrap:wrap}
+footer .logo-txt{font-size:26px}
+footer .tag{padding-left:28px;border-left:1px solid var(--line);font-size:14px;color:#EED8CB}
+footer nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}
+footer nav a{text-decoration:none;font-family:var(--display);font-size:12.5px;letter-spacing:.8px;color:#EED8CB}
+footer nav a:hover{color:#fff}
+
+@media (max-width:1020px){
+  .links{display:none}
+  .about,.svc,.pk,.rv{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .sys,.opts{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:44px}
+  .steps::before{display:none}
+  .works{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .plat{justify-content:center}
+  .plat i{display:none}
+  footer nav{margin-left:0}
+}
+@media (max-width:760px){
+  .hero{min-height:0;flex-direction:column;align-items:stretch}
+  .hero-photo{position:relative;width:100%;height:auto;aspect-ratio:1012/672;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+  .hero .wrap{padding:0 0 110px;margin-top:-40px}
+  .opt{padding:24px;gap:20px}
+  .opt .txt{padding-left:20px}
+  .tile{width:68px;height:64px}
+  .sys-ctas .btn,.hero .ctas .btn{min-width:0;width:100%}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sh .en::before,.sh .en::after,.sh h2.lined::before,.sh h2.lined::after{width:40px}
+  footer .tag{border-left:0;padding-left:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.arrow{transition:none}}
+</style>
+</head>
+<body>
+<div class="sweeps" aria-hidden="true">
+  <svg viewBox="0 0 1440 2400" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#F8C7AA" stop-opacity="0"/><stop offset=".5" stop-color="#F8C7AA" stop-opacity=".6"/><stop offset="1" stop-color="#F8C7AA" stop-opacity="0"/></linearGradient>
+      <filter id="b"><feGaussianBlur stdDeviation="2"/></filter>
+      <filter id="bb"><feGaussianBlur stdDeviation="16"/></filter>
+    </defs>
+    <g fill="none" stroke="url(#g1)">
+      <path d="M900 -40 C 1300 120, 1480 380, 1500 620" stroke-width="2" filter="url(#b)"/>
+      <path d="M900 -20 C 1300 140, 1470 400, 1490 640" stroke-width="24" opacity=".25" filter="url(#bb)"/>
+      <path d="M-80 980 C 200 1180, 520 1260, 840 1250" stroke-width="1.6" filter="url(#b)"/>
+      <path d="M1520 1500 C 1200 1640, 900 1700, 560 1690" stroke-width="1.6" filter="url(#b)"/>
+      <path d="M-80 2200 C 300 2100, 900 2380, 1520 2120" stroke-width="2" filter="url(#b)"/>
+      <path d="M-80 2230 C 320 2130, 920 2410, 1520 2150" stroke-width="28" opacity=".22" filter="url(#bb)"/>
+    </g>
+  </svg>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo-txt" href="#top">First Frame Studio</a>
+    <nav class="links" aria-label="เมนูหลัก">
+      <a href="#about">ABOUT</a>
+      <a href="#services">SERVICES</a>
+      <a href="#system">SYSTEM</a>
+      <a href="#packages">PACKAGES</a>
+      <a href="#works">WORKS</a>
+      <a href="#clients">CLIENTS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <a class="btn btn-cream btn-sm" href="#contact">ปรึกษาฟรี</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="hero-photo" role="img" aria-label="ครีเอเตอร์รีวิวครีมบำรุงผิวหน้ากล้อง"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>First Frame<br>Studio</h1>
+        <div class="en">Content &amp; Commerce Agency</div>
+        <div class="rule"></div>
+        <p class="th">รับผลิตคอนเทนต์และดูแลการขายออนไลน์</p>
+        <div class="ctas">
+          <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+          <a class="btn btn-line" href="#services">ดูบริการทั้งหมด <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="plat" aria-label="แพลตฟอร์มที่เราดูแล">
+      <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.8a5.7 5.7 0 1 0 4.9 5.6V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>TikTok</span><i></i>
+      <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>TikTok Shop</span><i></i>
+      <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor"/></svg>Instagram</span><i></i>
+      <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2z"/></svg>Facebook</span><i></i>
+      <span class="lemon">Lemon8</span><i></i>
+      <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Affiliate</span><i></i>
+      <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Live Commerce</span>
+    </div>
+
+    <section id="about">
+      <div class="sh">
+        <div class="en caps">About us</div>
+        <h2>ทำไมแบรนด์ถึงเลือก <em>First Frame</em></h2>
+      </div>
+      <div class="about">
+        <article class="card">
+          <img src="img/about-1.jpg" width="492" height="326" alt="มือกำลังวาดสตอรี่บอร์ดคลิปสินค้า">
+          <div class="bd">
+            <div class="ttl"><span class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 2-1.5L22 7H6"/></svg></span><h3>คลิปที่ออกแบบมาเพื่อขาย</h3></div>
+            <p>วางโครงเรื่องและภาพเล่าแบรนด์ให้ชัด ดึงจุดขาย และกระตุ้นการตัดสินใจซื้อ</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/about-2.jpg" width="493" height="326" alt="หน้าจอโปรแกรมตัดต่อวิดีโอสินค้า">
+          <div class="bd">
+            <div class="ttl"><span class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><h3>จับกระแสได้ทันเวลา</h3></div>
+            <p>เข้าใจเทรนด์คอนเทนต์และพฤติกรรมผู้ชม ปรับไอเดียและรูปแบบได้รวดเร็ว ทันกระแส</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/about-3.jpg" width="493" height="326" alt="ทีมงานกำลังถ่ายทำคลิปสินค้าในสตูดิโอ">
+          <div class="bd">
+            <div class="ttl"><span class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.3"/><circle cx="19" cy="9" r="2.3"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 18a4 4 0 0 1 4.5-4M22.5 18a4 4 0 0 0-4.5-4"/></svg></span><h3>ครบจบในทีมเดียว</h3></div>
+            <p>ตั้งแต่คิดคอนเทนต์ ถ่ายทำ ตัดต่อ จนถึงการรายงานผล พร้อมทีมมืออาชีพ</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="sh">
+        <div class="small">First Frame Studio</div>
+        <div class="big">Our Services</div>
+        <h2 class="lined">บริการของเรา</h2>
+      </div>
+      <div class="svc">
+        <details class="card">
+          <summary>
+            <img src="img/svc-1.jpg" width="504" height="400" alt="กล้องกำลังถ่ายเซรั่มบนแท่นหิน">
+            <span class="bar"><span class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg></span><span class="txt"><h3>คอนเทนต์และโปรดักชัน</h3><p>ถ่ายคลิปปักตะกร้า · ฟุตเทจสินค้า · ออกกอง</p></span><span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></span>
+          </summary>
+          <ul>
+            <li>คิดคอนเทนต์และเขียนสคริปต์</li>
+            <li>คลิป REAL TIKTOK ดันสินค้าตามกระแส</li>
+            <li>ถ่ายและตัดต่อคลิปปักตะกร้า</li>
+            <li>ตัดต่อคลิปและพากย์เสียง</li>
+            <li>ฟุตเทจสินค้าและฟุตเทจโทนบ้าน</li>
+            <li>จัดหาสตูดิโอถ่ายงาน/ไลฟ์ และออกกองนอกสถานที่</li>
+          </ul>
+        </details>
+        <details class="card">
+          <summary>
+            <img src="img/svc-2.jpg" width="494" height="400" alt="นางแบบโทนผิวสุขภาพดีในสตูดิโอ">
+            <span class="bar"><span class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg></span><span class="txt"><h3>จัดหาคน</h3><p>KOL · KOC · พรีเซนเตอร์ · นางแบบ</p></span><span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></span>
+          </summary>
+          <ul>
+            <li>อินฟลูเอนเซอร์ KOL และ KOC</li>
+            <li>เก็บฟุตเทจรีวิวจากอินฟลูเอนเซอร์</li>
+            <li>พรีเซนเตอร์ นางแบบ / นายแบบ</li>
+            <li>จัดหาพนักงานเข้าบริษัท</li>
+          </ul>
+        </details>
+        <details class="card">
+          <summary>
+            <img src="img/svc-3.jpg" width="502" height="400" alt="โน้ตบุ๊กแสดงกราฟยอดขายบนโต๊ะทำงาน">
+            <span class="bar"><span class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 2-1.5L22 7H6"/></svg></span><span class="txt"><h3>ดูแลช่องและการขาย</h3><p>ดูแลช่อง · Affiliate · ไลฟ์ขาย</p></span><span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></span>
+          </summary>
+          <ul>
+            <li>ดูแล TikTok, Instagram และเพจ Facebook</li>
+            <li>ทำการตลาดบน Lemon8</li>
+            <li>ดูแล Affiliate ของแบรนด์</li>
+            <li>ไลฟ์ขายและไลฟ์ดันสินค้า</li>
+            <li>ดูแลการตลาดประจำแบรนด์</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="sys">
+        <div>
+          <div class="en">For brand owners</div>
+          <h2>ระบบสำหรับเจ้าของแบรนด์</h2>
+          <p class="lead">ระบบติดตามงานและผลการขาย<br>จัดการโปรเจกต์ คอนเทนต์ และทีมงานได้ในที่เดียว</p>
+        </div>
+        <div class="monitor">
+          <div class="mscreen">
+            <svg width="72" height="60" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="1" width="21" height="13" rx="1.5"/><path d="M12 14v4M7.5 18.5h9"/></svg>
+            <span>พื้นที่สำหรับภาพหน้าจอระบบจริง</span>
+          </div>
+          <div class="mneck" aria-hidden="true"></div>
+          <div class="mfoot" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="opts">
+        <article class="card opt">
+          <span class="tile"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></span>
+          <div class="txt"><h3>ใช้ระบบอย่างเดียว</h3><p>ดูแลงานและทีมของแบรนด์ด้วยตัวเอง</p></div>
+        </article>
+        <article class="card opt">
+          <span class="tile"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.3"/><circle cx="19" cy="9" r="2.3"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 18a4 4 0 0 1 4.5-4M22.5 18a4 4 0 0 0-4.5-4"/></svg></span>
+          <div class="txt"><h3>เอเจนซี่ + ระบบ</h3><p>ให้ทีม First Frame ดูแลคอนเทนต์ครบวงจร พร้อมระบบติดตามงาน</p></div>
+        </article>
+      </div>
+      <div class="sys-ctas">
+        <a class="btn btn-cream" href="#contact">ขอทดลองใช้ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#contact">นัดดูเดโม <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="sh">
+        <div class="en">How We Work</div>
+        <h2>ขั้นตอนการทำงาน</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="c"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01" stroke-width="2.4"/></svg></div>
+          <h3><b>1</b>บรีฟและวางแผน</h3>
+          <p>คุยเป้าหมายแบรนด์ สรุปโจทย์<br>และวางแผนงานให้ตรงทิศทาง</p>
+          <img src="img/step-1.jpg" width="373" height="306" alt="ทีมงานคุยบรีฟกับลูกค้า">
+        </div>
+        <div class="step">
+          <div class="c"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h.01M8 12h.01M8 16h.01" stroke-width="2.2"/><path d="M11 8h5M11 12h5M11 16h5"/></svg></div>
+          <h3><b>2</b>คิดคอนเทนต์</h3>
+          <p>พัฒนาไอเดียและคอนเซ็ปต์<br>จัดทำสตอรี่บอร์ดให้นำไปถ่ายทำได้จริง</p>
+          <img src="img/step-2.jpg" width="364" height="306" alt="เอกสารคอนเซ็ปต์และสตอรี่บอร์ด">
+        </div>
+        <div class="step">
+          <div class="c"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg></div>
+          <h3><b>3</b>ถ่ายทำและหาคน</h3>
+          <p>ถ่ายทำอย่างมืออาชีพ<br>พร้อมจัดหานางแบบและนักแสดงที่เหมาะสม</p>
+          <img src="img/step-3.jpg" width="366" height="306" alt="กล้องถ่ายนางแบบรีวิวสกินแคร์">
+        </div>
+        <div class="step">
+          <div class="c"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 20v-6M12 20V9M18 20V4"/></svg></div>
+          <h3><b>4</b>ปล่อยและวัดผล</h3>
+          <p>เผยแพร่คอนเทนต์ตามแผน<br>พร้อมติดตามผลและสรุปประสิทธิภาพ</p>
+          <img src="img/step-4.jpg" width="379" height="306" alt="โน้ตบุ๊กแสดงรายงานผลคอนเทนต์">
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="sh">
+        <div class="en">Packages</div>
+        <h2>แพ็กเกจรายเดือน</h2>
+      </div>
+      <div class="pk">
+        <article class="card">
+          <span class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c0-4-3-6.5-7.5-6.5 0 4.3 3 6.5 7.5 6.5z"/><path d="M12 10c0-4 3-6.5 7.5-6.5 0 4.3-3 6.5-7.5 6.5z"/></svg></span>
+          <h3>STARTER</h3>
+          <p>คิดคอนเทนต์ · ถ่ายคลิปปักตะกร้า · ตัดต่อ</p>
+          <img src="img/pk-1.jpg" width="425" height="222" alt="ขวดเซรั่มบนแท่นหิน">
+          <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+        </article>
+        <article class="card">
+          <span class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></span>
+          <h3>GROWTH</h3>
+          <p>เพิ่ม KOC และดูแล Affiliate</p>
+          <img src="img/pk-2.jpg" width="415" height="222" alt="กระปุกครีมบนแท่นหิน">
+          <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+        </article>
+        <article class="card">
+          <span class="ic"><svg width="48" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg></span>
+          <h3>FULL BRAND</h3>
+          <p>ดูแลช่องทางออนไลน์และไลฟ์ขาย</p>
+          <img src="img/pk-3.jpg" width="420" height="222" alt="ขวดโลชั่นกับเงาใบไม้">
+          <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+        </article>
+      </div>
+      <p class="pk-note">สอบถามราคาและรายละเอียดแพ็กเกจได้ทางแชท</p>
+    </section>
+
+    <section id="works">
+      <div class="sh">
+        <div class="en">Selected Works</div>
+        <h2>ผลงานของเรา</h2>
+      </div>
+      <div class="works">
+        <figure class="work">
+          <div class="vbox">
+            <video src="vid/work-1.mp4" poster="vid/work-1.jpg" preload="none" playsinline></video>
+            <button class="vplay" type="button" aria-label="เล่นคลิปผลงาน: รีวิวมาส์กผม · บอกโปร"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2E1812" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+          </div>
+          <figcaption><span class="cat">บิวตี้</span>รีวิวมาส์กผม · บอกโปร</figcaption>
+        </figure>
+        <figure class="work">
+          <div class="vbox">
+            <video src="vid/work-2.mp4" poster="vid/work-2.jpg" preload="none" playsinline></video>
+            <button class="vplay" type="button" aria-label="เล่นคลิปผลงาน: แว่นกรองแสง ALP Pickle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2E1812" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+          </div>
+          <figcaption><span class="cat">แว่นตา</span>แว่นกรองแสง ALP Pickle</figcaption>
+        </figure>
+        <figure class="work">
+          <div class="vbox">
+            <video src="vid/work-3.mp4" poster="vid/work-3.jpg" preload="none" playsinline></video>
+            <button class="vplay" type="button" aria-label="เล่นคลิปผลงาน: แต่งตัว Outfit Ideas"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2E1812" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+          </div>
+          <figcaption><span class="cat">แฟชั่น</span>แต่งตัว Outfit Ideas</figcaption>
+        </figure>
+        <figure class="work">
+          <div class="vbox">
+            <video src="vid/work-4.mp4" poster="vid/work-4.jpg" preload="none" playsinline></video>
+            <button class="vplay" type="button" aria-label="เล่นคลิปผลงาน: Outfit of the Day · เสื้อคอปก"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2E1812" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+          </div>
+          <figcaption><span class="cat">แฟชั่น</span>Outfit of the Day · เสื้อคอปก</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="clients">
+      <div class="sh">
+        <div class="en">Testimonials</div>
+        <h2 class="lined">เสียงจากลูกค้า</h2>
+      </div>
+      <div class="rv">
+        <article class="card"><div class="q" aria-hidden="true">“</div><p>รอรีวิวจากลูกค้าจริง</p><span class="dash" aria-hidden="true"></span></article>
+        <article class="card"><div class="q" aria-hidden="true">“</div><p>รอรีวิวจากลูกค้าจริง</p><span class="dash" aria-hidden="true"></span></article>
+        <article class="card"><div class="q" aria-hidden="true">“</div><p>รอรีวิวจากลูกค้าจริง</p><span class="dash" aria-hidden="true"></span></article>
+      </div>
+      <div class="logos-h">แบรนด์ที่ไว้วางใจเรา</div>
+      <div class="logos">
+        <div class="card logo"><img src="img/clients/pip-pome.png" width="520" height="106" alt="Pip &amp; Pome"></div>
+        <div class="card logo"><img src="img/clients/velune.png" width="520" height="91" alt="Velune"></div>
+        <div class="card logo"><img src="img/clients/sucre-rue.png" width="466" height="170" alt="Sucré Rue"></div>
+        <div class="card logo"><img src="img/clients/mali-form.png" width="520" height="83" alt="mali form"></div>
+        <div class="card logo"><img src="img/clients/roast-yard.png" width="520" height="163" alt="Roast Yard"></div>
+      </div>
+    </section>
+
+    <div class="final" id="contact">
+      <h2>Let’s create your first frame</h2>
+      <p class="th">เล่าสินค้าและเป้าหมายให้เราฟัง แล้วเราจะส่งแผนคอนเทนต์และใบเสนอราคาให้</p>
+      <a class="btn btn-cream" href="https://www.facebook.com/profile.php?id=100090189117552" target="_blank" rel="noopener">ขอใบเสนอราคา <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <p class="contact-line">โทร [เบอร์โทร] · LINE [@LINE ID] · [อีเมลบริษัท] · 84/158 หมู่ 12 ต.นาป่า อ.เมือง จ.ชลบุรี</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo-txt" href="#top">First Frame Studio</a>
+    <span class="tag">Content &amp; Commerce Agency</span>
+    <nav aria-label="เมนูท้ายเว็บ">
+      <a href="#about">ABOUT</a><a href="#services">SERVICES</a><a href="#system">SYSTEM</a><a href="#packages">PACKAGES</a><a href="#works">WORKS</a><a href="#clients">CLIENTS</a><a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function(){
+  var boxes=[].slice.call(document.querySelectorAll('.vbox'));
+  boxes.forEach(function(box){
+    var v=box.querySelector('video'), b=box.querySelector('.vplay');
+    function stopOthers(){boxes.forEach(function(o){if(o!==box){var ov=o.querySelector('video');if(!ov.paused)ov.pause();}});}
+    b.addEventListener('click',function(){stopOthers();v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
+    v.addEventListener('play',function(){stopOthers();box.classList.add('playing');});
+    v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;});
+  });
+})();
+</script>
+</body>
+</html>
