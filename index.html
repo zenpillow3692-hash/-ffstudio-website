@@ -264,6 +264,30 @@ section{padding:96px 0 0}
 .line-float{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;padding:12px 20px 12px 16px;border-radius:999px;background:#06C755;color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
 .line-float:hover{transform:translateY(-2px)}
 @media (max-width:520px){.line-float span{display:none}.line-float{padding:14px}}
+.sdlg{width:min(1060px,94vw);max-height:92vh;padding:0;border:1px solid rgba(240,179,149,.45);border-radius:22px;background:#1E110E;color:var(--ink);overflow:auto;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.sdlg::backdrop{background:rgba(10,5,4,.72);backdrop-filter:blur(4px)}
+.sdlg-x{position:absolute;top:14px;right:14px;z-index:3;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;color:#fff;background:rgba(0,0,0,.45)}
+.sdlg-hero{position:relative;display:grid;grid-template-columns:1fr 1.15fr;background:#2A1712;min-height:300px}
+.sdlg-hero img{grid-column:2;width:100%;height:100%;object-fit:cover}
+.sdlg-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#2A1712 38%,rgba(42,23,18,.6) 52%,transparent 70%);pointer-events:none}
+.sdlg-copy{position:absolute;inset:0 auto 0 0;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:36px 40px;max-width:60%}
+.sdlg-k{font-family:var(--display);font-size:13px;letter-spacing:4px;color:#EBD6CB}
+.sdlg-copy h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#FFF3EA;margin-top:16px}
+.sdlg-copy p{font-size:clamp(17px,1.9vw,23px);color:#EBD6CB;margin-top:10px}
+.sdlg-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#EFE4D6;color:#241410}
+.sp{position:relative;padding:30px 30px 32px;display:flex;flex-direction:column}
+.sp+.sp:not(.best){border-left:1px solid rgba(36,20,16,.25)}
+.sp.best{background:linear-gradient(160deg,#7A1422,#4E0A14);color:#fff}
+.sp-tag{position:absolute;top:14px;right:16px;font-size:12px;font-weight:600;color:#4E0A14;background:#F8E6D8;border-radius:999px;padding:2px 10px}
+.sp-n{font-family:var(--display);font-weight:600;font-size:clamp(24px,2.6vw,34px)}
+.sp-p{font-family:var(--display);font-weight:600;font-size:clamp(18px,2vw,26px);margin-top:4px}
+.sp-p b{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(46px,5.4vw,74px);line-height:1;font-variant-numeric:tabular-nums;margin-right:6px}
+.sp-a{font-size:clamp(15px,1.6vw,20px);margin-top:6px;opacity:.9}
+.sp-btn{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:12px;padding:13px 16px;border-radius:4px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:18px;background:#2A1410;color:#FFF3EA;transition:transform .2s}
+.sp-btn:hover{transform:translateY(-2px)}
+.sp.best .sp-btn{background:#F6EDE3;color:#4E0A14}
+.sdlg-note{text-align:center;font-size:13.5px;color:var(--muted);padding:14px 20px 18px;margin:0}
+@media (max-width:760px){.sdlg-hero{grid-template-columns:1fr}.sdlg-hero img{grid-column:1;aspect-ratio:952/500;height:auto}.sdlg-hero::after{background:linear-gradient(180deg,transparent 30%,#2A1712 100%)}.sdlg-copy{position:relative;max-width:none;padding:0 22px 24px;margin-top:-40px}.sdlg-plans{grid-template-columns:1fr}.sp+.sp:not(.best){border-left:0;border-top:1px solid rgba(36,20,16,.25)}}
 .contact-line{margin-top:22px;color:var(--muted);font-size:15px}
 .contact-line a{color:var(--cream);text-decoration:underline;text-underline-offset:3px}
 
@@ -562,7 +586,7 @@ footer nav a:hover{color:#fff}
           <h3>STARTER</h3>
           <p>คิดคอนเทนต์ · ถ่ายคลิปปักตะกร้า · ตัดต่อ</p>
           <img src="img/pk-1.jpg" width="425" height="222" alt="ขวดเซรั่มบนแท่นหิน">
-          <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+          <a class="btn btn-cream" href="https://line.me/R/ti/p/@101upgih" data-open="starter-dlg">ดูราคาแพ็กเกจ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
         </article>
         <article class="card">
           <span class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></span>
@@ -652,6 +676,15 @@ footer nav a:hover{color:#fff}
 </main>
 
 <a class="line-float" href="https://line.me/R/ti/p/@101upgih" target="_blank" rel="noopener" aria-label="แอดไลน์ First Frame Studio"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8zM8.3 13.6H6.4c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.3h1.4c.3 0 .5.2.5.5s-.2.5-.5.5zm2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.7v2.4c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.2.1-.4.3-.5h.2c.2 0 .3.1.4.2l2 2.7V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm3.1-2.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.9c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18z"/></svg><span>คุยทาง LINE</span></a>
+<dialog id="starter-dlg" class="sdlg" aria-labelledby="sdlg-t">
+  <button class="sdlg-x" type="button" aria-label="ปิด" data-close><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="sdlg-hero">
+    <img src="img/starter-hero.jpg" width="952" height="500" alt="ช่างภาพถ่ายลิปสติกในสตูดิโอ พร้อมคลิปบนมือถือ">
+    <div class="sdlg-copy"><span class="sdlg-k">FIRST FRAME STUDIO · STARTER</span><h2 id="sdlg-t">เปลี่ยนสินค้าของคุณ<br>ให้เป็นคลิปพร้อมขาย</h2><p>ถ่ายและตัดต่อคลิปติดตะกร้า</p></div>
+  </div>
+  <div class="sdlg-plans"><div class="sp "><div class="sp-n">10 คลิป</div><div class="sp-p"><b>1,990</b> บาท</div><div class="sp-a">เฉลี่ย 199 บาท/คลิป</div><a class="sp-btn" target="_blank" rel="noopener" href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20STARTER%2010%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%201%2C990%20%E0%B8%9A%E0%B8%B2%E0%B8%97">เลือกแพ็กเกจ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="sp "><div class="sp-n">30 คลิป</div><div class="sp-p"><b>4,500</b> บาท</div><div class="sp-a">เฉลี่ย 150 บาท/คลิป</div><a class="sp-btn" target="_blank" rel="noopener" href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20STARTER%2030%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%204%2C500%20%E0%B8%9A%E0%B8%B2%E0%B8%97">เลือกแพ็กเกจ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="sp best"><span class="sp-tag">คุ้มที่สุด</span><div class="sp-n">50 คลิป</div><div class="sp-p"><b>6,990</b> บาท</div><div class="sp-a">เฉลี่ย 139.80 บาท/คลิป</div><a class="sp-btn" target="_blank" rel="noopener" href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20STARTER%2050%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%206%2C990%20%E0%B8%9A%E0%B8%B2%E0%B8%97">เลือกแพ็กเกจ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div></div>
+  <p class="sdlg-note">กด "เลือกแพ็กเกจ" แล้วจะเปิด LINE @101upgih พร้อมข้อความแพ็กเกจที่เลือก</p>
+</dialog>
 <footer>
   <div class="wrap">
     <a class="logo-txt" href="#top">First Frame Studio</a>
@@ -676,6 +709,10 @@ footer nav a:hover{color:#fff}
 <script>
 (function(){var el=document.getElementById('system');if(!el||!('IntersectionObserver' in window))return;
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.remove('anim');void el.offsetWidth;el.classList.add('anim');}})},{threshold:.35});io.observe(el);})();
+</script>
+<script>
+document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){var d=document.getElementById(a.getAttribute('data-open'));if(d&&d.showModal){e.preventDefault();d.showModal();}});});
+document.querySelectorAll('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d||e.target.closest('[data-close]'))d.close();});});
 </script>
 </body>
 </html>
