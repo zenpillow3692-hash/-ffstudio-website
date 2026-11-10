@@ -135,12 +135,33 @@ section{padding:96px 0 0}
 .svc ul{margin:0;padding:16px 24px 22px 44px;border-top:1px solid var(--line);color:#EBD6CB;font-size:15px;display:grid;gap:4px}
 
 /* system */
-.sys{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
+.hub-strip{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:8px 10px 8px 8px;border-radius:999px;text-decoration:none;color:var(--cream);background:rgba(40,23,19,.65);border:1px solid rgba(240,179,149,.55);backdrop-filter:blur(6px);box-shadow:0 0 0 0 rgba(231,164,134,.5);animation:hsglow 2.8s ease-in-out infinite;flex-wrap:wrap}
+.hub-strip:hover{border-color:var(--cream)}
+.hs-new,.ns-new{font-size:11.5px;font-weight:600;color:#2E1812;background:linear-gradient(90deg,#FFF3EA,#F0BFA3);border-radius:999px;padding:1px 10px}
+.hub-strip b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:19px}
+.hs-t{font-size:14.5px;color:#EBD6CB}
+.hs-go{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:#2E1812;background:var(--cream);border-radius:999px;padding:3px 12px}
+@keyframes hsglow{0%,100%{box-shadow:0 0 0 0 rgba(231,164,134,.0)}50%{box-shadow:0 0 22px 2px rgba(231,164,134,.35)}}
+.links a.nav-sys{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(240,179,149,.7);border-radius:999px;padding:5px 14px 5px 6px;color:var(--cream);background:rgba(185,112,90,.25)}
+.links a.nav-sys:hover{background:rgba(185,112,90,.45);color:#fff}
+#system{position:relative;margin-top:60px;padding:80px 0 70px}
+#system::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;border-block:1px solid rgba(240,179,149,.35);background:radial-gradient(700px 420px at 72% 40%,rgba(231,164,134,.28),transparent 70%),radial-gradient(600px 400px at 15% 80%,rgba(185,112,90,.22),transparent 70%),linear-gradient(180deg,#3A221C,#2A1814)}
+.sys-badge{display:inline-block;margin-bottom:14px;font-family:var(--display);font-size:14px;font-weight:600;color:#2E1812;background:linear-gradient(90deg,#FFF3EA,#F0BFA3);border-radius:999px;padding:4px 14px;text-decoration:none}
+.gbars rect{transform-box:fill-box;transform-origin:50% 100%}
+#system.anim .gbars rect{animation:grow 1.1s cubic-bezier(.2,.8,.2,1) both}
+#system.anim .gbars rect:nth-child(2){animation-delay:.06s}#system.anim .gbars rect:nth-child(3){animation-delay:.12s}#system.anim .gbars rect:nth-child(4){animation-delay:.18s}#system.anim .gbars rect:nth-child(5){animation-delay:.24s}#system.anim .gbars rect:nth-child(6){animation-delay:.3s}#system.anim .gbars rect:nth-child(7){animation-delay:.36s}#system.anim .gbars rect:nth-child(8){animation-delay:.42s}#system.anim .gbars rect:nth-child(9){animation-delay:.48s}#system.anim .gbars rect:nth-child(10){animation-delay:.54s}
+@keyframes grow{from{transform:scaleY(.15)}to{transform:scaleY(1)}}
+.gline{stroke-dasharray:420;stroke-dashoffset:0}
+#system.anim .gline{animation:draw 1.6s .3s ease-out both}
+@keyframes draw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
+.mscreen.shot{box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 60px rgba(231,164,134,.25)}
+@media (prefers-reduced-motion:reduce){.hub-strip{animation:none}#system.anim .gbars rect,#system.anim .gline{animation:none}}
+.sys{display:grid;grid-template-columns:.85fr 1.25fr;gap:50px;align-items:center}
 .sys .en{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,3vw,36px);color:#F0C2A8;display:flex;align-items:center;gap:24px}
 .sys .en::after{content:"";width:200px;max-width:25vw;height:1px;background:linear-gradient(90deg,var(--hair),transparent)}
 .sys h2{font-size:clamp(34px,4.4vw,56px);font-weight:500;color:var(--cream);line-height:1.2;margin-top:10px}
 .sys .lead{font-size:clamp(17px,1.8vw,21px);color:#F1DED3;margin-top:22px;line-height:1.7}
-.monitor{max-width:520px;margin-inline:auto;width:100%}
+.monitor{max-width:680px;margin-inline:auto;width:100%}
 .mscreen{aspect-ratio:16/9.2;border:10px solid #1A100E;outline:2px solid #B9A59B;border-radius:12px;background:#3A2621;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#F1DED3;text-align:center;padding:20px;font-size:17px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
 .mscreen svg{color:var(--rose)}
 .mneck{width:20%;height:44px;margin:0 auto;background:linear-gradient(90deg,#8E7E76,#D4C5BC,#8E7E76);clip-path:polygon(18% 0,82% 0,92% 100%,8% 100%)}
@@ -314,7 +335,7 @@ footer nav a:hover{color:#fff}
           </div>
         </div>
       </div>
-      <a class="nav-sys" href="#system">ระบบเจ้าของแบรนด์</a>
+      <a class="nav-sys" href="hub/"><span class="ns-new">ใหม่</span>ระบบเจ้าของแบรนด์</a>
       <a href="#services">SERVICES</a>
       <a href="#packages">PACKAGES</a>
       <a href="#works">WORKS</a>
@@ -338,6 +359,7 @@ footer nav a:hover{color:#fff}
           <a class="btn btn-cream" href="#contact">ขอใบเสนอราคา <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
           <a class="btn btn-line" href="#services">ดูบริการทั้งหมด <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
         </div>
+        <a class="hub-strip" href="hub/"><span class="hs-new">ใหม่</span><b>Brand Hub</b><span class="hs-t">ระบบเดียวคุมทั้งบริษัท</span><span class="hs-go">ดูระบบ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -435,6 +457,7 @@ footer nav a:hover{color:#fff}
     <section id="system">
       <div class="sys">
         <div>
+          <a class="sys-badge" href="hub/">✦ ใหม่ · Brand Hub</a>
           <div class="en">For brand owners</div>
           <h2>ระบบเดียว<br>คุมทั้งบริษัท</h2>
           <p class="lead">ทุกแผนกทำงานบนข้อมูลชุดเดียวกัน<br>เลิกสั่งงานกระจัดกระจายในไลน์</p>
@@ -457,13 +480,14 @@ footer nav a:hover{color:#fff}
 <rect x="168" y="146" width="440" height="186" rx="10" fill="#2E1E1A" stroke="#6E4034" stroke-opacity=".6"/>
 <text x="182" y="168" font-size="11.5" fill="#F8E6D8">ยอดขาย 10 วันล่าสุด</text>
 <g stroke="#F3D6C3" stroke-opacity=".08"><path d="M184 200h400M184 240h400M184 280h400"/></g>
-<rect x="184" y="262" width="20" height="38" rx="3" fill="url(#bar)"/><rect x="218" y="248" width="20" height="52" rx="3" fill="url(#bar)"/><rect x="252" y="256" width="20" height="44" rx="3" fill="url(#bar)"/><rect x="286" y="234" width="20" height="66" rx="3" fill="url(#bar)"/><rect x="320" y="242" width="20" height="58" rx="3" fill="url(#bar)"/><rect x="354" y="220" width="20" height="80" rx="3" fill="url(#bar)"/><rect x="388" y="226" width="20" height="74" rx="3" fill="url(#bar)"/><rect x="422" y="204" width="20" height="96" rx="3" fill="url(#bar)"/><rect x="456" y="212" width="20" height="88" rx="3" fill="url(#bar)"/><rect x="490" y="190" width="20" height="110" rx="3" fill="url(#bar)"/><polyline points="194,240 228,226 262,234 296,212 330,220 364,198 398,204 432,182 466,190 500,168" fill="none" stroke="#FFF3EA" stroke-width="1.6" stroke-opacity=".85"/>
+<g class="gbars"><rect x="184" y="262" width="20" height="38" rx="3" fill="url(#bar)"/><rect x="218" y="248" width="20" height="52" rx="3" fill="url(#bar)"/><rect x="252" y="256" width="20" height="44" rx="3" fill="url(#bar)"/><rect x="286" y="234" width="20" height="66" rx="3" fill="url(#bar)"/><rect x="320" y="242" width="20" height="58" rx="3" fill="url(#bar)"/><rect x="354" y="220" width="20" height="80" rx="3" fill="url(#bar)"/><rect x="388" y="226" width="20" height="74" rx="3" fill="url(#bar)"/><rect x="422" y="204" width="20" height="96" rx="3" fill="url(#bar)"/><rect x="456" y="212" width="20" height="88" rx="3" fill="url(#bar)"/><rect x="490" y="190" width="20" height="110" rx="3" fill="url(#bar)"/></g><polyline class="gline" points="194,240 228,226 262,234 296,212 330,220 364,198 398,204 432,182 466,190 500,168" fill="none" stroke="#FFF3EA" stroke-width="1.6" stroke-opacity=".85"/>
 <rect x="620" y="146" width="150" height="186" rx="10" fill="#2E1E1A" stroke="#6E4034" stroke-opacity=".6"/>
 <text x="634" y="168" font-size="11.5" fill="#F8E6D8">ช่องทางขาย</text>
 <circle cx="636" cy="188" r="4.5" fill="#F0C2A8"/><text x="648" y="192" font-size="10.5" fill="#EBD6CB">TikTok Shop</text><circle cx="636" cy="206" r="4.5" fill="#E08A6A"/><text x="648" y="210" font-size="10.5" fill="#EBD6CB">Shopee</text><circle cx="636" cy="224" r="4.5" fill="#B9705A"/><text x="648" y="228" font-size="10.5" fill="#EBD6CB">Facebook</text><circle cx="636" cy="242" r="4.5" fill="#7A3F30"/><text x="648" y="246" font-size="10.5" fill="#EBD6CB">LINE</text>
 <g transform="translate(695,284)" fill="none" stroke-width="11">
 <circle r="28" stroke="#7A3F30"/><circle r="28" stroke="#F0C2A8" stroke-dasharray="70 106" transform="rotate(-90)"/><circle r="28" stroke="#E08A6A" stroke-dasharray="48 128" stroke-dashoffset="-70" transform="rotate(-90)"/><circle r="28" stroke="#B9705A" stroke-dasharray="34 142" stroke-dashoffset="-118" transform="rotate(-90)"/></g>
 <g transform="translate(168,348)"><rect width="602" height="22" rx="6" fill="#2A1C18"/><rect x="8" y="5" width="58" height="12" rx="6" fill="#4A2A22"/><text x="37" y="14" font-size="8.5" fill="#F3D6C3" text-anchor="middle">TikTok</text><rect x="72" y="5" width="46" height="12" rx="6" fill="none" stroke="#E7A486" stroke-opacity=".7"/><text x="95" y="14" font-size="8" fill="#E7A486" text-anchor="middle">LIVE</text><rect x="130" y="8" width="150" height="6" rx="3.0" fill="#F3D6C3" opacity="0.25"/><rect x="330" y="8" width="70" height="6" rx="3.0" fill="#F3D6C3" opacity="0.2"/><rect x="520" y="5" width="70" height="12" rx="6" fill="#9FD8B0" opacity=".18"/><text x="555" y="14" font-size="8.5" fill="#9FD8B0" text-anchor="middle">แพ็กแล้ว</text></g><g transform="translate(168,374)"><rect width="602" height="22" rx="6" fill="#2A1C18"/><rect x="8" y="5" width="58" height="12" rx="6" fill="#4A2A22"/><text x="37" y="14" font-size="8.5" fill="#F3D6C3" text-anchor="middle">Shopee</text><rect x="130" y="8" width="150" height="6" rx="3.0" fill="#F3D6C3" opacity="0.25"/><rect x="330" y="8" width="70" height="6" rx="3.0" fill="#F3D6C3" opacity="0.2"/><rect x="520" y="5" width="70" height="12" rx="6" fill="#F0C2A8" opacity=".18"/><text x="555" y="14" font-size="8.5" fill="#F0C2A8" text-anchor="middle">รอแพ็ก</text></g><g transform="translate(168,400)"><rect width="602" height="22" rx="6" fill="#2A1C18"/><rect x="8" y="5" width="58" height="12" rx="6" fill="#4A2A22"/><text x="37" y="14" font-size="8.5" fill="#F3D6C3" text-anchor="middle">TikTok</text><rect x="72" y="5" width="46" height="12" rx="6" fill="none" stroke="#E7A486" stroke-opacity=".7"/><text x="95" y="14" font-size="8" fill="#E7A486" text-anchor="middle">Affiliate</text><rect x="130" y="8" width="150" height="6" rx="3.0" fill="#F3D6C3" opacity="0.25"/><rect x="330" y="8" width="70" height="6" rx="3.0" fill="#F3D6C3" opacity="0.2"/><rect x="520" y="5" width="70" height="12" rx="6" fill="#9FD8B0" opacity=".18"/><text x="555" y="14" font-size="8.5" fill="#9FD8B0" text-anchor="middle">จัดส่งแล้ว</text></g><g transform="translate(168,426)"><rect width="602" height="22" rx="6" fill="#2A1C18"/><rect x="8" y="5" width="58" height="12" rx="6" fill="#4A2A22"/><text x="37" y="14" font-size="8.5" fill="#F3D6C3" text-anchor="middle">Facebook</text><rect x="130" y="8" width="150" height="6" rx="3.0" fill="#F3D6C3" opacity="0.25"/><rect x="330" y="8" width="70" height="6" rx="3.0" fill="#F3D6C3" opacity="0.2"/><rect x="520" y="5" width="70" height="12" rx="6" fill="#F0C2A8" opacity=".18"/><text x="555" y="14" font-size="8.5" fill="#F0C2A8" text-anchor="middle">รอแพ็ก</text></g>
+<rect class="rowhl" x="168" y="348" width="602" height="22" rx="6" fill="none" stroke="#F3C4A8" stroke-width="1.5" stroke-opacity=".8"><animate attributeName="y" values="348;374;400;426" dur="6s" repeatCount="indefinite" calcMode="discrete"/></rect>
 </svg></div>
           <div class="mneck" aria-hidden="true"></div>
           <div class="mfoot" aria-hidden="true"></div>
@@ -640,6 +664,10 @@ footer nav a:hover{color:#fff}
     v.addEventListener('ended',function(){box.classList.remove('playing');v.controls=false;});
   });
 })();
+</script>
+<script>
+(function(){var el=document.getElementById('system');if(!el||!('IntersectionObserver' in window))return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.remove('anim');void el.offsetWidth;el.classList.add('anim');}})},{threshold:.35});io.observe(el);})();
 </script>
 </body>
 </html>
