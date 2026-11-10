@@ -228,6 +228,13 @@ section{padding:96px 0 0}
 .final h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(36px,4.6vw,60px);color:var(--cream);line-height:1.1}
 .final .th{font-size:19px;color:#EBD6CB;margin-top:10px}
 .final .btn{margin-top:30px;font-size:19px;padding:15px 44px}
+.final-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.final-ctas .btn{margin-top:0;font-size:18px;padding:14px 34px}
+.btn-line-app{background:#06C755;color:#fff;box-shadow:0 8px 26px rgba(6,199,85,.3)}
+.btn-line-app:hover{background:#05b34c}
+.line-float{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;padding:12px 20px 12px 16px;border-radius:999px;background:#06C755;color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
+.line-float:hover{transform:translateY(-2px)}
+@media (max-width:520px){.line-float span{display:none}.line-float{padding:14px}}
 .contact-line{margin-top:22px;color:var(--muted);font-size:15px}
 
 /* footer */
@@ -614,12 +621,16 @@ footer nav a:hover{color:#fff}
     <div class="final" id="contact">
       <h2>Let’s create your first frame</h2>
       <p class="th">เล่าสินค้าและเป้าหมายให้เราฟัง แล้วเราจะส่งแผนคอนเทนต์และใบเสนอราคาให้</p>
-      <a class="btn btn-cream" href="https://www.facebook.com/profile.php?id=100090189117552" target="_blank" rel="noopener">ขอใบเสนอราคา <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <p class="contact-line">โทร [เบอร์โทร] · LINE [@LINE ID] · [อีเมลบริษัท] · 84/158 หมู่ 12 ต.นาป่า อ.เมือง จ.ชลบุรี</p>
+      <div class="final-ctas">
+        <a class="btn btn-line-app" href="https://line.me/R/ti/p/@101upgih" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8zM8.3 13.6H6.4c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.3h1.4c.3 0 .5.2.5.5s-.2.5-.5.5zm2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.7v2.4c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.2.1-.4.3-.5h.2c.2 0 .3.1.4.2l2 2.7V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm3.1-2.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.9c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18z"/></svg>แอดไลน์ ขอใบเสนอราคา</a>
+        <a class="btn btn-line" href="https://www.facebook.com/profile.php?id=100090189117552" target="_blank" rel="noopener">ทักทาง Facebook</a>
+      </div>
+      <p class="contact-line">LINE: @101upgih · Facebook: First Frame Studio · 84/158 หมู่ 12 ต.นาป่า อ.เมือง จ.ชลบุรี</p>
     </div>
   </div>
 </main>
 
+<a class="line-float" href="https://line.me/R/ti/p/@101upgih" target="_blank" rel="noopener" aria-label="แอดไลน์ First Frame Studio"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8zM8.3 13.6H6.4c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.3h1.4c.3 0 .5.2.5.5s-.2.5-.5.5zm2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.7v2.4c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.2.1-.4.3-.5h.2c.2 0 .3.1.4.2l2 2.7V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm3.1-2.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.9c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18z"/></svg><span>คุยทาง LINE</span></a>
 <footer>
   <div class="wrap">
     <a class="logo-txt" href="#top">First Frame Studio</a>
