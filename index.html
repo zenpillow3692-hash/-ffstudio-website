@@ -46,6 +46,25 @@ header,main,footer{position:relative;z-index:1}
 .links{display:flex;gap:34px}
 .links a{text-decoration:none;font-family:var(--display);font-size:14px;letter-spacing:.4px;color:#EED8CB}
 .links a:hover{color:#fff}
+.nav .wrap{position:relative}
+.dd{position:static}
+.links a.dd-btn{display:inline-flex;align-items:center;gap:6px;padding:14px 0;margin:-14px 0}
+.mega{position:absolute;left:0;right:0;top:100%;margin-top:0;padding:24px 26px 26px;border-radius:20px;background:rgba(40,23,19,.97);border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .2s,visibility .2s;z-index:40}
+.dd:hover .mega,.dd:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mm-top{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.mm-title{font-family:var(--display);font-size:20px;color:var(--cream)}
+.mm-sub{font-size:13.5px;color:var(--muted)}
+.mm-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.05fr;gap:22px}
+.mm-h{font-family:var(--serif);font-style:italic;font-weight:600;font-size:19px;color:#F0C2A8;margin-bottom:8px}
+.mm-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.links .mm-col a{display:block;font-size:14px;letter-spacing:0;color:#EBD6CB;padding:4px 0;font-family:var(--body)}
+.links .mm-col a::before{content:"·";color:var(--rose);margin-right:8px}
+.links .mm-col a:hover{color:#fff}
+.links a.mm-sys{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:16px;background:linear-gradient(150deg,rgba(185,112,90,.45),rgba(110,62,50,.45));border:1px solid rgba(240,179,149,.5);letter-spacing:0;align-self:start}
+.mm-sys b{font-family:var(--display);font-weight:500;font-size:18px;color:var(--cream)}
+.mm-sys span:not(.mm-badge){font-size:13.5px;color:#F1DED3;line-height:1.6}
+.mm-sys em{font-style:normal;font-size:13.5px;color:#F3C4A8}
+.mm-badge{align-self:flex-start;font-size:11.5px;color:#2E1812;background:var(--cream);border-radius:999px;padding:1px 10px}
 .links a.nav-sys{color:#F3C4A8;font-weight:500}
 .links a.nav-sys:hover{color:#fff}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;padding:12px 30px;transition:transform .2s,background .2s,box-shadow .2s;cursor:pointer;border:0}
@@ -260,7 +279,15 @@ footer nav a:hover{color:#fff}
   <div class="wrap">
     <a class="logo-txt" href="#top">First Frame Studio</a>
     <nav class="links" aria-label="เมนูหลัก">
-      <a href="#about">ABOUT</a>
+      <div class="dd">
+        <a href="#about" class="dd-btn" aria-haspopup="true">ABOUT <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega" role="menu" aria-label="บริการของเรา">
+          <div class="mm-top"><span class="mm-title">เรารับทำอะไรบ้าง</span><span class="mm-sub">บริการครบ ตั้งแต่คิดคอนเทนต์จนถึงปิดการขาย</span></div>
+          <div class="mm-grid"><div class="mm-col"><div class="mm-h">คอนเทนต์ & โปรดักชัน</div><ul><li><a href="#services">ทำคลิป REAL TIKTOK ดันสินค้ากระแส</a></li><li><a href="#services">ตัดต่อคลิป พากย์เสียง</a></li><li><a href="#services">คิดคอนเทนต์ คิดสคริปต์</a></li><li><a href="#services">ทำคลิปปักตะกร้า</a></li><li><a href="#services">ถ่ายฟุตเทจไทบ้าน</a></li><li><a href="#services">ถ่ายฟุตเทจสินค้า</a></li><li><a href="#services">จัดหาสตูดิโอถ่ายงาน - ไลฟ์สด</a></li><li><a href="#services">ออกกองถ่ายงานนอกสถานที่</a></li></ul></div><div class="mm-col"><div class="mm-h">จัดหาคน</div><ul><li><a href="#services">จัดหาอินฟลู KOL - KOC</a></li><li><a href="#services">จัดหาพรีเซนเตอร์ นางแบบ</a></li><li><a href="#services">เก็บฟุตเทจรีวิวอินฟลู</a></li><li><a href="#services">จัดหาพนักงานเข้าบริษัท</a></li></ul></div><div class="mm-col"><div class="mm-h">ดูแลช่อง & การขาย</div><ul><li><a href="#services">ดูแลช่อง TikTok / IG / เพจ</a></li><li><a href="#services">ดูแลทำการตลาด Lemon8</a></li><li><a href="#services">ดูแล Affiliate แบรนด์</a></li><li><a href="#services">ไลฟ์สด ดันสินค้า</a></li><li><a href="#services">ดูแลการตลาดประจำแบรนด์</a></li></ul></div>
+            <a class="mm-sys" href="#system"><span class="mm-badge">ใหม่</span><b>ระบบเจ้าของแบรนด์</b><span>ออเดอร์ แชท ยอดแอด สต็อก และทีมงาน รวมไว้ในระบบเดียว</span><em>ดูรายละเอียด →</em></a>
+          </div>
+        </div>
+      </div>
       <a class="nav-sys" href="#system">ระบบเจ้าของแบรนด์</a>
       <a href="#services">SERVICES</a>
       <a href="#packages">PACKAGES</a>
