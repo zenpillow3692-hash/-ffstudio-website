@@ -43,7 +43,9 @@ header,main,footer{position:relative;z-index:1}
 .nav{position:sticky;top:0;z-index:30;background:rgba(30,17,14,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,170,140,.12)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
 .logo-txt{font-family:var(--serif);font-style:italic;font-weight:600;font-size:30px;text-decoration:none;color:var(--cream);white-space:nowrap;line-height:1}
-.links{display:flex;gap:34px}
+.links{display:flex;gap:34px;align-items:center}
+.links>a,.links .dd>a{line-height:1;display:inline-flex;align-items:center}
+.dd{display:flex;align-items:center}
 .links a{text-decoration:none;font-family:var(--display);font-size:14px;letter-spacing:.4px;color:#EED8CB}
 .links a:hover{color:#fff}
 .nav .wrap{position:relative}
