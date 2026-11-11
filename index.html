@@ -26,7 +26,7 @@
 <link rel="icon" type="image/png" href="logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Playfair+Display:wght@700;800&amp;family=Trirong:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&amp;family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Playfair+Display:wght@700;800&amp;family=Prompt:wght@400;500;600;700&amp;family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
 <style>
 /* Layout idea: a cocoa studio wall swept by rose-gold light; serif English over Thai headings, warm glass cards with photos. */
 :root{
@@ -39,7 +39,7 @@
   --cream:#F8E6D8;
   --rose:#E7A486;
   --serif:'Cormorant Garamond','Times New Roman',serif;
-  --display:'Sarabun',system-ui,sans-serif;--head:'Trirong','Sarabun',Georgia,serif;
+  --display:'Sarabun',system-ui,sans-serif;--head:'Prompt','Sarabun',system-ui,sans-serif;
   --body:'Sarabun',system-ui,sans-serif;
   color-scheme:dark;
 }
@@ -49,6 +49,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 a{color:inherit}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;text-wrap:balance}
 h1,h2{font-family:var(--head)}
+.sh h2{font-weight:500}
 p{margin:0}
 img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--cream);outline-offset:3px;border-radius:8px}
@@ -390,7 +391,7 @@ html{scroll-padding-top:84px}
  #system::before{background:radial-gradient(420px 360px at 50% 34%,rgba(214,128,96,.38),transparent 70%),radial-gradient(500px 300px at 50% 100%,rgba(150,80,60,.3),transparent 70%),#1E100D;border-block:1px solid rgba(240,179,149,.45)}
  .sysm{display:block;text-align:center}
  .sm-badge{display:inline-block;padding:5px 14px;border-radius:999px;border:1px solid rgba(240,179,149,.6);color:#F2B08E;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.3px}
- .sm-h{margin-top:16px;font-family:var(--display);font-weight:700;font-size:40px;line-height:1.2;color:#F8E6D8}
+ .sm-h{margin-top:16px;font-family:var(--head);font-weight:600;font-size:40px;line-height:1.2;color:#F8E6D8}
  .sm-q{margin-top:10px;font-family:var(--display);font-weight:600;font-size:17px;color:#F2A884}
  .sm-sub{margin:12px auto 0;max-width:320px;font-size:15.5px;line-height:1.65;color:#D9BFB2}
  .sm-sub b{color:#FBE3D5;font-weight:600}
