@@ -229,8 +229,9 @@ document.getElementById('qform').addEventListener('submit',function(e){
   e.preventDefault();
   var t=document.getElementById('q-task').value.trim(), c=document.getElementById('q-contact').value.trim();
   var msg='สนใจ Brand Hub'+(t?'\nงานที่อยากเริ่ม: '+t:'')+(c?'\nติดต่อกลับ: '+c:'');
-  window.open('https://line.me/R/oaMessage/@101upgih/?'+encodeURIComponent(msg),'_blank','noopener');
+  if(window.ffLine)ffLine(msg);else window.open('https://line.me/R/oaMessage/@101upgih/?'+encodeURIComponent(msg),'_blank','noopener');
 });
 </script>
+<script src="../line-qr.js" defer></script>
 </body>
 </html>
