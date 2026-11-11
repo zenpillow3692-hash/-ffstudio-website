@@ -269,7 +269,7 @@ section{padding:96px 0 0}
 .chat{width:100%;display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:20px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .av-blur{flex:none;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#B89A80,#6E5A4C);filter:blur(5px);opacity:.8}
 .rv .chat .bubble{margin:0;flex:1;text-align:left;font-family:var(--body);font-size:clamp(15px,1.4vw,17px);line-height:1.45;color:#1A1A1A;background:#EEF0F4;border-radius:22px;padding:12px 18px}
-.rv .rv-note{font-size:15px;font-style:italic;color:#F1DED3}
+.rv .rv-note{font-size:14.5px;font-style:normal;color:#C9A898}
 .logos-h{display:flex;align-items:center;justify-content:center;gap:28px;margin:60px 0 28px;font-family:var(--display);font-size:clamp(26px,3vw,38px);color:var(--cream)}
 .logos-h::before,.logos-h::after{content:"";width:280px;max-width:22vw;height:1px;background:linear-gradient(90deg,transparent,var(--hair))}
 .logos-h::after{background:linear-gradient(270deg,transparent,var(--hair))}
@@ -443,6 +443,24 @@ html{scroll-padding-top:84px}
  .promo-was{margin-top:12px;font-size:16px}
  .promo-d{font-size:16px;margin-top:16px;color:#D9BFB2}
  .promo-btn{display:flex;justify-content:center;width:100%;margin-top:22px}
+}
+@media (max-width:760px){
+ .hub-strip{flex-wrap:nowrap;max-width:100%}
+ .hub-strip .hs-t{white-space:nowrap;font-size:13.5px}
+}
+@media (max-width:420px){.hub-strip .hs-t{display:none}}
+@media (max-width:760px){
+ .hub-strip .hs-go{flex:none;white-space:nowrap}
+ .hub-strip b,.hub-strip .hs-new{flex:none;white-space:nowrap}
+ .logos>*{aspect-ratio:auto!important;height:78px;padding:10px!important}
+ .rv{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-20px;padding:0 20px 6px;max-width:none;scrollbar-width:none}
+ .rv::-webkit-scrollbar{display:none}
+ .rv>*{flex:0 0 82%;scroll-snap-align:center}
+ .rv .card,.rvc{padding:22px 16px 20px;gap:12px}
+ .logos-h{white-space:nowrap;font-size:26px!important}
+ .logos-h::before,.logos-h::after{width:28px!important;flex:none}
+ .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+ .logos>*{flex:0 0 calc((100% - 20px)/3)}
 }
 /* mobile flow */
 .burger,.mnav,.mbar,.rc-tabs{display:none}
