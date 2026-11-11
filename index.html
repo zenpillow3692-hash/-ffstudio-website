@@ -343,7 +343,7 @@ section{padding:96px 0 0}
 .promo-feat div{display:flex;align-items:center;gap:12px;padding:20px 18px;font-family:var(--display);font-size:15.5px;color:#FFF3EA;line-height:1.35}
 .promo-feat div+div{border-left:1px solid rgba(240,179,149,.35)}
 .promo-feat svg{flex:none;color:#F0A27E}
-.rate{margin-top:72px}
+.rate{margin-top:0}
 .rc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
 .rc{display:flex;flex-direction:column;padding:26px 22px 22px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(110,62,50,.45),rgba(60,34,28,.45))}
 .rc h3{font-family:var(--display);font-weight:600;font-size:21px;color:#FFF3EA;text-align:center;margin:0 0 16px}
@@ -377,6 +377,53 @@ section{padding:96px 0 0}
 .qr-card span{font-family:var(--display);font-size:22px;color:#F2A884;font-weight:600}
 .qr-card small{font-size:13.5px;color:#C9A898;max-width:200px;margin-top:4px}
 @media (max-width:640px){.qr-card{display:none}}
+html{scroll-padding-top:84px}
+/* mobile flow */
+.burger,.mnav,.mbar,.rc-tabs{display:none}
+@media (max-width:1020px){
+ .burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-left:-8px;border:1px solid var(--line);border-radius:12px;background:rgba(110,62,50,.3);cursor:pointer;padding:0 11px}
+ .burger span{display:block;height:2px;border-radius:2px;background:var(--cream);transition:transform .2s,opacity .2s}
+ .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+ .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ .nav .wrap>.btn-sm{margin-left:auto}
+ .mnav:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 16px 18px;border-top:1px solid rgba(232,170,140,.14)}
+ .mnav a{display:flex;align-items:center;gap:8px;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(110,62,50,.28);color:var(--cream);text-decoration:none;font-family:var(--display);font-size:15.5px}
+ .mnav .mn-sys{grid-column:1/-1;justify-content:center;background:linear-gradient(90deg,rgba(185,112,90,.45),rgba(110,62,50,.45))}
+}
+@media (max-width:760px){
+ .flow{display:flex;flex-direction:column}
+ #packages{order:1}#works{order:2}#services{order:3}#rates{order:4}#clients{order:5}#about{order:6}#system{order:7}#process{order:8}#faq{order:9}#contact{order:10}
+ section{padding-top:64px}
+ #packages.promo-sec{padding-top:56px}
+ .sh{margin-bottom:28px}
+ .rate{margin-top:0}
+ .about img,.step img{display:none}
+ .about{gap:12px}
+ .about .bd{padding:18px 20px}
+ .about p{margin-top:8px;font-size:14.5px;line-height:1.65}
+ .steps{grid-template-columns:1fr;row-gap:12px;text-align:left}
+ .step{display:grid;grid-template-columns:56px 1fr;column-gap:16px;align-items:center;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(60,34,28,.4)}
+ .step .c{width:56px;height:56px;margin:0;grid-row:span 2}
+ .step .c svg{width:24px;height:24px}
+ .step h3{font-size:18px}
+ .step p{margin-top:2px;font-size:14px;line-height:1.55}
+ .step p br{display:none}
+ .rc-tabs{display:flex;gap:6px;padding:5px;margin-bottom:14px;border-radius:999px;border:1px solid var(--line);background:rgba(60,34,28,.5);position:sticky;top:72px;z-index:5;backdrop-filter:blur(8px)}
+ .rc-tabs button{flex:1;padding:10px 6px;border:0;border-radius:999px;background:transparent;color:#EBD6CB;font-family:var(--display);font-size:14.5px;cursor:pointer}
+ .rc-tabs button.on{background:linear-gradient(90deg,#FBD5BD,#F2B08E);color:#2E1812;font-weight:600}
+ .rc-grid .rc{display:none}.rc-grid .rc.on{display:flex}
+ .final{padding:64px 0 40px}
+ .nav .wrap>.btn-sm{display:none}
+ .burger{margin-left:auto}
+ .nav .logo-txt{font-size:24px}
+ .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(26,14,12,.94);border-top:1px solid rgba(232,170,140,.2);backdrop-filter:blur(10px)}
+ .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 10px;border-radius:999px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:15.5px}
+ .mb-price{flex:0 0 34%;border:1px solid #F2B08E;color:#FBD5BD}
+ .mb-line{flex:1;background:#06C755;color:#fff}
+ .line-float{display:none}
+ body{padding-bottom:76px}
+}
 .fqs{max-width:860px;margin:0 auto;display:grid;gap:12px}
 .fq{border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,rgba(110,62,50,.35),rgba(60,34,28,.35));overflow:hidden}
 .fq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 22px}
@@ -472,6 +519,17 @@ footer nav a:hover{color:#fff}
       <a href="#contact">CONTACT</a>
     </nav>
     <a class="btn btn-cream btn-sm" href="#contact">ปรึกษาฟรี</a>
+    <button class="burger" type="button" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mnav" id="mnav" hidden>
+    <a href="#packages">โปรโมชั่น</a>
+    <a href="#works">ผลงาน</a>
+    <a href="#services">บริการ</a>
+    <a href="#rates">ราคา</a>
+    <a href="#clients">รีวิวลูกค้า</a>
+    <a href="#faq">คำถามที่พบบ่อย</a>
+    <a href="hub/" class="mn-sys"><span class="ns-new">ใหม่</span>ระบบเจ้าของแบรนด์</a>
+    <a href="#contact" class="mn-sys">ติดต่อเรา</a>
   </div>
 </header>
 
@@ -493,7 +551,7 @@ footer nav a:hover{color:#fff}
     </div>
   </div>
 
-  <div class="wrap">
+  <div class="wrap flow">
     <div class="plat" aria-label="แพลตฟอร์มที่เราดูแล">
       <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.8a5.7 5.7 0 1 0 4.9 5.6V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>TikTok</span><i></i>
       <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>TikTok Shop</span><i></i>
@@ -682,9 +740,12 @@ footer nav a:hover{color:#fff}
         <div class="promo-more promo-feat"><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg><span>มีนางแบบพูดขาย</span></div><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span>นำเสนอจุดเด่นและวิธีใช้</span></div><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 2h4"/></svg><span>ความยาว 30–60 วินาที/คลิป</span></div><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/></svg><span>ตัดต่อพร้อมใช้ลงทุกช่องทาง</span></div></div>
       </div>
     
+    </section>
+
+    <section id="rates">
       <div class="rate">
-        <div class="sh"><div class="en">Rate Card 2026</div><h2>แพ็กเกจบริการราคาปกติ</h2></div>
-        <div class="rc-grid"><div class="rc"><h3>คลิปปักตะกร้า<small>(มีนางแบบพูดขาย)</small></h3><table><thead><tr><th>จำนวนคลิป</th><th>ราคา</th></tr></thead><tbody><tr><td>1 คลิป</td><td>490 บาท</td></tr><tr><td>5 คลิป</td><td>2,250 บาท</td></tr><tr><td>10 คลิป</td><td>3,990 บาท</td></tr><tr><td>20 คลิป</td><td>7,500 บาท</td></tr><tr><td>30 คลิป</td><td>10,500 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%E0%B8%9B%E0%B8%B1%E0%B8%81%E0%B8%95%E0%B8%B0%E0%B8%81%E0%B8%A3%E0%B9%89%E0%B8%B2" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="rc"><h3>คลิปสินค้า + ตัดต่อ<small>(ไม่มีเสียงพูด)</small></h3><table><thead><tr><th>จำนวนคลิป</th><th>ราคา</th></tr></thead><tbody><tr><td>1 คลิป</td><td>450 บาท</td></tr><tr><td>5 คลิป</td><td>2,000 บาท</td></tr><tr><td>10 คลิป</td><td>3,800 บาท</td></tr><tr><td>30 คลิป</td><td>10,500 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2%20%2B%20%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="rc"><h3>ฟุตเทจสินค้า<small>(ไฟล์ดิบ)</small></h3><table><thead><tr><th>จำนวนฟุตเทจ</th><th>ราคา</th></tr></thead><tbody><tr><td>50 ฟุตเทจ</td><td>3,000 บาท</td></tr><tr><td>100 ฟุตเทจ</td><td>5,000 บาท</td></tr><tr><td>300 ฟุตเทจ</td><td>10,500 บาท</td></tr><tr><td>500 ฟุตเทจ</td><td>16,500 บาท</td></tr><tr><td>1,000 ฟุตเทจ</td><td>30,000 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%9F%E0%B8%B8%E0%B8%95%E0%B9%80%E0%B8%97%E0%B8%88%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div></div>
+        <div class="sh"><div class="en">Rate Card 2026</div><h2>แพ็กเกจราคาปกติ</h2></div>
+        <div class="rc-tabs" role="tablist"><button type="button" role="tab" class="on" data-i="0">คลิปปักตะกร้า</button><button type="button" role="tab" data-i="1">คลิป + ตัดต่อ</button><button type="button" role="tab" data-i="2">ฟุตเทจ</button></div><div class="rc-grid"><div class="rc on"><h3>คลิปปักตะกร้า<small>(มีนางแบบพูดขาย)</small></h3><table><thead><tr><th>จำนวนคลิป</th><th>ราคา</th></tr></thead><tbody><tr><td>1 คลิป</td><td>490 บาท</td></tr><tr><td>5 คลิป</td><td>2,250 บาท</td></tr><tr><td>10 คลิป</td><td>3,990 บาท</td></tr><tr><td>20 คลิป</td><td>7,500 บาท</td></tr><tr><td>30 คลิป</td><td>10,500 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%E0%B8%9B%E0%B8%B1%E0%B8%81%E0%B8%95%E0%B8%B0%E0%B8%81%E0%B8%A3%E0%B9%89%E0%B8%B2" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="rc"><h3>คลิปสินค้า + ตัดต่อ<small>(ไม่มีเสียงพูด)</small></h3><table><thead><tr><th>จำนวนคลิป</th><th>ราคา</th></tr></thead><tbody><tr><td>1 คลิป</td><td>450 บาท</td></tr><tr><td>5 คลิป</td><td>2,000 บาท</td></tr><tr><td>10 คลิป</td><td>3,800 บาท</td></tr><tr><td>30 คลิป</td><td>10,500 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2%20%2B%20%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><div class="rc"><h3>ฟุตเทจสินค้า<small>(ไฟล์ดิบ)</small></h3><table><thead><tr><th>จำนวนฟุตเทจ</th><th>ราคา</th></tr></thead><tbody><tr><td>50 ฟุตเทจ</td><td>3,000 บาท</td></tr><tr><td>100 ฟุตเทจ</td><td>5,000 บาท</td></tr><tr><td>300 ฟุตเทจ</td><td>10,500 บาท</td></tr><tr><td>500 ฟุตเทจ</td><td>16,500 บาท</td></tr><tr><td>1,000 ฟุตเทจ</td><td>30,000 บาท</td></tr></tbody></table><a href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%88%20%E0%B8%9F%E0%B8%B8%E0%B8%95%E0%B9%80%E0%B8%97%E0%B8%88%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2" target="_blank" rel="noopener">สอบถามแพ็กเกจนี้ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div></div>
         <div class="rc-add"><h3>บริการเพิ่มเติม</h3><ul><li><b>ตัดต่อคลิปจากฟุตเทจลูกค้า</b><span>เริ่มต้น 250 บาท/คลิป</span></li><li><b>พากย์เสียง</b><span>เริ่มต้น 150 บาท/คลิป</span></li><li><b>คิดคอนเทนต์ + เขียนสคริปต์</b><span>เริ่มต้น 300 บาท/สคริปต์</span></li><li><b>จัดหา KOC / KOL</b><span>เสนอราคาตามจริง</span></li><li><b>จัดหานางแบบ / พรีเซนเตอร์</b><span>เสนอราคาตามจริง</span></li></ul></div>
         <div class="rc-foot">
           <ul class="rc-terms"><li>ราคาไม่รวมภาษีมูลค่าเพิ่ม (VAT)</li><li>หลังส่งไฟล์งานแล้ว ดาวน์โหลดไฟล์ได้ภายใน 7 วัน</li><li>คอนเทนต์ผลิตตามบรีฟและข้อมูลสินค้าที่ลูกค้าให้ไว้</li><li>หากปรับแก้เพิ่มเติมนอกเหนือจากบรีฟที่ตกลง อาจมีค่าใช้จ่ายเพิ่ม</li></ul>
@@ -771,6 +832,7 @@ footer nav a:hover{color:#fff}
   </div>
 </main>
 
+<div class="mbar"><a class="mb-price" href="#rates">ดูราคา</a><a class="mb-line" href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B9%82%E0%B8%9B%E0%B8%A3%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B0%E0%B8%81%E0%B8%A3%E0%B9%89%E0%B8%B2%2010%20%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%9B%201%2C990%20%E0%B8%9A%E0%B8%B2%E0%B8%97" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>ทักไลน์รับโปร 1,990</a></div>
 <a class="line-float" href="https://line.me/R/ti/p/@101upgih" target="_blank" rel="noopener" aria-label="แอดไลน์ First Frame Studio"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8zM8.3 13.6H6.4c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.3h1.4c.3 0 .5.2.5.5s-.2.5-.5.5zm2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.7v2.4c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.3c0-.2.1-.4.3-.5h.2c.2 0 .3.1.4.2l2 2.7V9.3c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm3.1-2.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.9c-.3 0-.5-.2-.5-.5V9.3c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9H18z"/></svg><span>คุยทาง LINE</span></a>
 <footer>
   <div class="wrap">
@@ -800,6 +862,15 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 <script>
 document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){var d=document.getElementById(a.getAttribute('data-open'));if(d&&d.showModal){e.preventDefault();d.showModal();}});});
 document.querySelectorAll('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d||e.target.closest('[data-close]'))d.close();});});
+</script>
+<script>
+(function(){
+ var b=document.querySelector('.burger'),m=document.getElementById('mnav');
+ if(b&&m){b.addEventListener('click',function(){var o=m.hidden;m.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'ปิดเมนู':'เปิดเมนู')});
+  m.addEventListener('click',function(e){if(e.target.closest('a')){m.hidden=true;b.setAttribute('aria-expanded','false')}});}
+ var tb=document.querySelectorAll('.rc-tabs button'),rc=document.querySelectorAll('.rc-grid .rc');
+ tb.forEach(function(t){t.addEventListener('click',function(){var i=+t.dataset.i;tb.forEach(function(x,j){x.classList.toggle('on',j===i);x.setAttribute('aria-selected',j===i)});rc.forEach(function(r,j){r.classList.toggle('on',j===i)})})});
+})();
 </script>
 <script src="line-qr.js" defer></script>
 </body>
