@@ -383,6 +383,48 @@ section{padding:96px 0 0}
 html{scroll-padding-top:84px}
 .nav .btn-sm,.nav-sys{white-space:nowrap}
 @media (max-width:1240px) and (min-width:1021px){.links{gap:16px}.links a{font-size:13.5px}.nav .wrap{gap:14px}.nav .logo-txt{font-size:24px}}
+.sysm{display:none}
+@media (max-width:760px){
+ #system{margin-top:56px;padding:44px 0 46px}
+ #system>*:not(.sysm){display:none!important}
+ #system::before{background:linear-gradient(170deg,#FFF4EC 0%,#F6D3BE 55%,#E9A98A 100%);border:0}
+ .sysm{display:block;color:#2E1812;text-align:center}
+ .sm-badge{display:inline-block;padding:6px 14px;border-radius:999px;background:#2E1812;color:#FBD5BD;font-family:var(--display);font-weight:600;font-size:13.5px}
+ .sm-h{margin-top:16px;font-family:var(--head);font-weight:700;font-size:36px;line-height:1.25;color:#2A120C}
+ .sm-sub{margin:12px auto 0;max-width:330px;font-size:16px;line-height:1.6;color:#5A3328}
+ .sm-sub b{color:#2A120C}
+ .sm-phone{position:relative;width:250px;margin:30px auto 0;padding:10px;border-radius:38px;background:#1B0F0C;box-shadow:0 30px 60px rgba(90,40,25,.45),0 0 0 2px #C98B70 inset;text-align:left}
+ .sm-scr{border-radius:30px;background:linear-gradient(180deg,#2E1A15,#1E110E);padding:22px 16px 18px;color:#F8E6D8;overflow:hidden}
+ .sm-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--display)}
+ .sm-top b{font-size:15px}.sm-top span{font-size:10.5px;padding:2px 8px;border-radius:999px;background:rgba(248,230,216,.15);color:#EBD6CB}
+ .sm-big{margin-top:14px}
+ .sm-big small{display:block;font-size:11.5px;color:#C9A898}
+ .sm-big b{display:block;font-family:var(--display);font-size:30px;font-weight:700;line-height:1.15;background:linear-gradient(180deg,#FFF0E4,#F2A884);-webkit-background-clip:text;background-clip:text;color:transparent}
+ .sm-big em{font-style:normal;font-size:11.5px;color:#8FD9A8}
+ .sm-bars{display:flex;align-items:flex-end;gap:5px;height:58px;margin-top:12px}
+ .sm-bars i{flex:1;border-radius:4px 4px 1px 1px;background:linear-gradient(180deg,#F2B08E,#9E5A45);transform-origin:bottom;animation:smgrow 1s cubic-bezier(.2,.8,.2,1) both}
+ .sm-bars i:nth-child(2){animation-delay:.05s}.sm-bars i:nth-child(3){animation-delay:.1s}.sm-bars i:nth-child(4){animation-delay:.15s}.sm-bars i:nth-child(5){animation-delay:.2s}.sm-bars i:nth-child(6){animation-delay:.25s}.sm-bars i:nth-child(7){animation-delay:.3s}.sm-bars i:nth-child(8){animation-delay:.35s}
+ @keyframes smgrow{from{transform:scaleY(.1)}}
+ .sm-k{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+ .sm-k div{padding:8px 6px;border-radius:10px;background:rgba(248,230,216,.08);text-align:center}
+ .sm-k small{display:block;font-size:10px;color:#C9A898}.sm-k b{font-family:var(--display);font-size:16px}
+ .sm-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:9px 10px;border-radius:10px;background:rgba(248,230,216,.06);font-size:12px}
+ .sm-row b{min-width:24px;text-align:center;padding:1px 7px;border-radius:999px;background:#F2B08E;color:#2E1812;font-size:11.5px}
+ .sm-toast{position:absolute;z-index:2;left:-34px;right:-34px;top:-18px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.96);box-shadow:0 14px 30px rgba(60,25,15,.3);color:#2E1812;text-align:left;animation:smtoast 4s 1s ease-in-out infinite both}
+ .sm-toast span{font-size:20px}.sm-toast b{display:block;font-family:var(--display);font-size:13.5px}.sm-toast small{display:block;font-size:11.5px;color:#7A5446}
+ @keyframes smtoast{0%{opacity:0;transform:translateY(-10px)}12%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
+ .sm-ba{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:8px;text-align:left}
+ .sm-ba li{display:grid;grid-template-columns:1fr 1fr;border-radius:14px;overflow:hidden;font-size:13.5px;line-height:1.4;box-shadow:0 6px 16px rgba(90,40,25,.12)}
+ .sm-ba span{display:flex;align-items:center;gap:6px;padding:11px 10px}
+ .sm-ba .o{background:rgba(255,255,255,.55);color:#7A5446}.sm-ba .o svg{flex:none;color:#C4533E}
+ .sm-ba .n{background:#2E1812;color:#FBE3D5}.sm-ba .n svg{flex:none;color:#8FD9A8}
+ .sm-ch{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;font-size:13px;color:#5A3328}
+ .sm-ch span{padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.65);color:#2E1812;font-weight:600}
+ .sm-cta{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;padding:16px;border-radius:999px;background:#2E1812;color:#FBD5BD;text-decoration:none;font-family:var(--display);font-weight:700;font-size:18px;box-shadow:0 12px 26px rgba(46,24,18,.35)}
+ .sm-link{display:inline-block;margin-top:14px;color:#2E1812;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+ .sm-note{margin-top:10px;font-size:13px;color:#6E4436}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.sm-bars i,.sm-toast{animation:none}}
 /* mobile flow */
 .burger,.mnav,.mbar,.rc-tabs{display:none}
 @media (max-width:1020px){
@@ -649,6 +691,28 @@ footer nav a:hover{color:#fff}
     </section>
 
     <section id="system">
+
+      <div class="sysm">
+        <span class="sm-badge">✦ ใหม่ · สำหรับเจ้าของแบรนด์</span>
+        <h2 class="sm-h">ยังสั่งงานทีม<br>ผ่านไลน์อยู่ไหม?</h2>
+        <p class="sm-sub"><b>Brand Hub</b> รวมออเดอร์ แชท สต็อก ยอดแอด และทีมงาน ไว้ในระบบเดียว เปิดดูได้จากมือถือ</p>
+        <div class="sm-phone" role="img" aria-label="ตัวอย่างหน้าจอ Brand Hub บนมือถือ (ข้อมูลตัวอย่าง)">
+          <div class="sm-toast"><span>💬</span><div><b>ลูกค้าทักทาง Shopee</b><small>สอบถามสต็อกสีขาว · เมื่อสักครู่</small></div></div>
+          <div class="sm-scr">
+            <div class="sm-top"><b>สรุปเช้า</b><span>ข้อมูลตัวอย่าง</span></div>
+            <div class="sm-big"><small>ยอดขายวันนี้</small><b>80,000 ฿</b><em>▲ 12% จากเมื่อวาน</em></div>
+            <div class="sm-bars" aria-hidden="true"><i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:63%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:70%"></i><i style="height:92%"></i></div>
+            <div class="sm-k"><div><small>ออเดอร์</small><b>126</b></div><div><small>ROAS</small><b>6.7</b></div><div><small>แชทใหม่</small><b>18</b></div></div>
+            <div class="sm-row"><span>📦 ออเดอร์รอแพ็ก</span><b>24</b></div>
+            <div class="sm-row"><span>✅ งานรออนุมัติ</span><b>3</b></div>
+          </div>
+        </div>
+        <ul class="sm-ba"><li><span class="o"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>สั่งงานในไลน์ ข้อความจม</span><span class="n"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>งานมีเจ้าของ มีสถานะ</span></li><li><span class="o"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>เปิด 5 แอปเช็กออเดอร์</span><span class="n"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>ออเดอร์ แชท สต็อก ที่เดียว</span></li><li><span class="o"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>ถามทีมทุกเช้าว่ายอดเท่าไหร่</span><span class="n"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>เปิดมือถือ เห็นยอดทันที</span></li></ul>
+        <p class="sm-ch">ใช้กับ <span>TikTok Shop</span><span>Shopee</span><span>Facebook</span><span>LINE</span><span>Instagram</span><span>Lazada</span></p>
+        <a class="sm-cta" href="https://line.me/R/oaMessage/@101upgih/?%E0%B8%AA%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%99%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%94%E0%B9%82%E0%B8%A1%20Brand%20Hub%20%E0%B8%9F%E0%B8%A3%E0%B8%B5%2030%20%E0%B8%99%E0%B8%B2%E0%B8%97%E0%B8%B5" target="_blank" rel="noopener">นัดเดโมฟรี 30 นาที <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="sm-link" href="hub/">ดูรายละเอียดระบบ Brand Hub →</a>
+        <p class="sm-note">ไม่มีข้อผูกมัด · เริ่มใช้ได้ใน 7 วัน · สอนทีมให้</p>
+      </div>
       <div class="sys">
         <div>
           <a class="sys-badge" href="hub/">✦ ใหม่ · Brand Hub</a>
